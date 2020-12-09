@@ -352,7 +352,7 @@ const loginUser = async (req, res) => {
 const checkUser = async (req, res) => {
   try {
     const checkUser = await pool.query(
-      'SELECT user_id as id, username, first_name as firstname, last_name as lastname, profile_pic as avatar FROM users WHERE user_id = $1',
+      'SELECT user_id as id, username, profile_pic as avatar FROM users WHERE user_id = $1',
       [req.user.id]
     )
     if (!checkUser.rowCount) return res.status(404).json({ message: 'User not found' })
